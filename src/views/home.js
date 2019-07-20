@@ -21,9 +21,9 @@ class Home extends Component {
   render() {
     return (
         <div>
-        <Header/>
+        <Header title={'Students Data'}/>
         {this.props.studentsData.length > 0 &&
-          <Cards/>
+          <Cards navigate={this.props.history}/>
         }
         {this.props.studentsData.length === 0 &&
            <div className="loading"> Loading ... </div>
