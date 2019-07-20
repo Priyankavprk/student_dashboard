@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import Header from '../components/Header';
+import person from '../images/person.png';
 
 class About extends Component {
   constructor(props) {
@@ -23,7 +24,9 @@ class About extends Component {
       <div>
        <Header title={'Student Details'}/>
         {this.state.student && this.state.student.hasOwnProperty('name') &&
-        <div className="container">
+        <div className="container" style={{display: 'flex', flexDirection: 'row'}}>
+        <img src={person} />
+        <div style={{flexDirection: 'column', alignSelf: 'center', margin: '5rem'}}>
         <h4>Name: {this.state.student.name}</h4>
         <h2>Class: {this.state.student.class}</h2>
         <h2>Roll Number: {this.state.student.rollNo}</h2>
@@ -33,6 +36,7 @@ class About extends Component {
             <h2 key={index}>{mark} : {this.state.student.marks[mark]}</h2>
           )
         })}
+        </div>
           </div>
         }
       </div>

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, FormControl } from 'react-bootstrap';
+import { Form, FormControl, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
-import { getFilteredData } from '../../actions';
+import { getFilteredData, filterDataAlphabatical } from '../../actions';
 import './styles.css';
 
 class Header extends Component {
@@ -22,6 +22,7 @@ class Header extends Component {
          </a>
          <Form inline>
           <FormControl type="text" placeholder="Search" className=" mr-sm-2" onChange={e => this.props.getFilteredData({ searchItem: e.target.value})}/>
+          <Button variant="outline-light" style={{margin: '2rem'}} onClick={() => this.props.filterDataAlphabatical()}>Alaphabetical</Button>
          </Form>
        </nav>
     );
@@ -40,6 +41,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getFilteredData: (searchText) => dispatch(getFilteredData(searchText)),
+  filterDataAlphabatical: () => dispatch(filterDataAlphabatical())
 })
 
 export default connect(
