@@ -25,7 +25,7 @@ class Home extends Component {
         <Header title={'Students Data'}/>
         <CardColumns>
         {this.props.studentsData.length > 0 &&
-          <Cards navigate={this.props.history} data={this.props.studentsData}/>
+          <Cards data={this.props.studentsData} navigate={this.props.history}/>
         }
         </CardColumns>
         {this.props.studentsData.length === 0 &&
