@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { CardColumns } from 'react-bootstrap';
 
 import Header from '../components/Header';
 import Cards from '../components/Cards';
@@ -22,9 +23,11 @@ class Home extends Component {
     return (
         <div>
         <Header title={'Students Data'}/>
+        <CardColumns>
         {this.props.studentsData.length > 0 &&
-          <Cards navigate={this.props.history}/>
+          <Cards navigate={this.props.history} data={this.props.studentsData}/>
         }
+        </CardColumns>
         {this.props.studentsData.length === 0 &&
            <div className="loading"> Loading ... </div>
         }
