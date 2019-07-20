@@ -2,6 +2,7 @@ const initialState = {
   data: [],
   filteredData: [],
   searchItem: '',
+  selectedStudent: []
 }
 
 export default function list(state = initialState, action) {
@@ -22,6 +23,12 @@ export default function list(state = initialState, action) {
       return {
         ...state,
         searchItem: action.text
+      }
+
+    case 'SET_SELECTED_STUDENT' :
+      return {
+        ...state,
+        selectedStudent: action.data
       }
 
     default:

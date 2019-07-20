@@ -22,7 +22,6 @@ class Header extends Component {
          </a>
          <Form inline>
           <FormControl type="text" placeholder="Search" className=" mr-sm-2" onChange={e => this.props.getFilteredData({ searchItem: e.target.value})}/>
-          <Button type="submit" onClick={() => this.props.getFilteredData(this.state.searchItem)}>Submit</Button>
          </Form>
        </nav>
     );
