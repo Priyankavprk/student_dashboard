@@ -18,7 +18,7 @@ class List extends Component {
       <div className="container">
       {this.props.studentsData.map(function(student, index){
         return (
-          <Card key={index} style={{ width: '18rem' }}>
+          <Card key={index} style={{ width: '18rem'}}>
             <Card.Body>
              <Card.Title>{student.name}</Card.Title>
              <Card.Subtitle className="mb-2 text-muted">Roll number: {student.rollNo}</Card.Subtitle>
