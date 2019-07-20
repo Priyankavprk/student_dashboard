@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import './styles.css';
 
@@ -13,10 +14,9 @@ class List extends Component {
   }
 
   render() {
-    console.log('//////',this.props.studentsData)
     return (
       <div className="container">
-      {this.props.studentsData.map(function(student, index){
+      {this.props.filteredData.map(function(student, index){
         return (
           <Card key={index} style={{ width: '18rem'}}>
             <Card.Body>
@@ -37,6 +37,7 @@ class List extends Component {
 
 const mapStateToProps = state => ({
    studentsData: state.students.data,
+   filteredData: state.students.filteredData
 })
 
 const mapDispatchToProps = dispatch => ({
