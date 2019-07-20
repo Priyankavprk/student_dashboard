@@ -13,21 +13,26 @@ class List extends Component {
     }
   }
 
+  handleClick(student) {
+    this.props.setSelectedStudent(student)
+  }
   render() {
     return (
-      <div className="container">
-      {this.props.filteredData.map(function(student, index){
+      <div className="container" onClick={() => this.props.navigate.push('/about')}>
+      {this.props.filteredData.map((student, index) => {
         return (
-          <Card key={index} style={{ width: '18rem'}}>
+          <a key={index} style={{ cursor: 'pointer' }} onClick={() => {this.handleClick(student)}}>
+          <Card style={{ width: '18rem', margin: '5rem'}}>
             <Card.Body>
              <Card.Title>{student.name}</Card.Title>
              <Card.Subtitle className="mb-2 text-muted">Roll number: {student.rollNo}</Card.Subtitle>
              <Card.Text>
                Total Marks: {Object.values(student.marks).reduce((acc, val) => {return acc + val;})}
              </Card.Text>
-             <Button variant="primary" onClick={() => this.props.navigate.push('/about')}>Show Details</Button>
+             <Button variant="primary">Show Details</Button>
             </Card.Body>
           </Card>
+          </a>
         )
       })}
       </div>
@@ -41,7 +46,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-
+   setSelectedStudent: (student) => dispatch({ type: 'SET_SELECTED_STUDENT', data: student})
 })
 
 export default connect(
