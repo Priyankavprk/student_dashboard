@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-
-import './styles.css';
 
 class List extends Component {
   constructor(props) {
@@ -15,10 +12,12 @@ class List extends Component {
 
   handleClick(student) {
     this.props.setSelectedStudent(student)
+    this.props.navigate.push(`/about/${student.rollNo}`)
+    localStorage.setItem('index', JSON.stringify(student))
   }
   render() {
     return (
-      <div className="container" onClick={() => this.props.navigate.push('/about')}>
+      <div className="container">
       {this.props.filteredData.map((student, index) => {
         return (
           <a key={index} style={{ cursor: 'pointer' }} onClick={() => {this.handleClick(student)}}>

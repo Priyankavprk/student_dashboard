@@ -2,7 +2,7 @@ const initialState = {
   data: [],
   filteredData: [],
   searchItem: '',
-  selectedStudent: []
+  selectedStudent: {}
 }
 
 export default function list(state = initialState, action) {

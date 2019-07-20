@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, FormControl, Button } from 'react-bootstrap';
+import { Form, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 import { getFilteredData } from '../../actions';
