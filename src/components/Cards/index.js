@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Card, Button } from 'react-bootstrap';
+import { Card, Button, Image } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import person from '../../images/person.png';
 
 class List extends Component {
   constructor(props) {
@@ -23,12 +24,12 @@ class List extends Component {
           <a key={index} style={{ cursor: 'pointer' }} onClick={() => {this.handleClick(student)}}>
           <Card style={{ width: '18rem', margin: '5rem'}}>
             <Card.Body>
+             <Card.Img variant="top" src={person}/>
              <Card.Title>{student.name}</Card.Title>
              <Card.Subtitle className="mb-2 text-muted">Roll number: {student.rollNo}</Card.Subtitle>
              <Card.Text>
                Total Marks: {Object.values(student.marks).reduce((acc, val) => {return acc + val;})}
              </Card.Text>
-             <Button variant="primary">Show Details</Button>
             </Card.Body>
           </Card>
           </a>

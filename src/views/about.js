@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { getStudentDetail } from '../actions';
-
 import Header from '../components/Header';
 
 class About extends Component {
@@ -18,7 +16,6 @@ class About extends Component {
     this.setState({
       student: this.props.selectedStudent && this.props.selectedStudent.hasOwnProperty('name') ? this.props.selectedStudent : JSON.parse(localStorage.getItem('index'))
     })
-    // let student = JSON.parse(localStorage.getItem('index'))
   }
 
   render() {
@@ -52,7 +49,6 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  getStudentDetail: (id) => dispatch(getStudentDetail(id))
 })
 
 export default connect(
