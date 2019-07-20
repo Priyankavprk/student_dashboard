@@ -13,19 +13,38 @@ export function getStudentsList () {
  }
 }
 
-export function getFilteredData (searchText) {
+export function getFilteredData (value) {
   return (dispatch, getState) => {
-    if (searchText.trim() === '') {
+    dispatch({
+      type: 'SET_SEARCH_TEXT',
+      text: value.searchItem
+    })
+    if (value.searchItem.trim() === '') {
       dispatch(searchResult(getState().students.data))
     } else {
     let result = getState().students.data.filter((data) => {
-        if (data.name.search(searchText) >= 0) {
+        if (data.name.toLowerCase().search(value.searchItem.toLowerCase()) >= 0) {
         return data
       }
       })
       dispatch(searchResult(result))
     }
   }
+}
+
+export function getStudentDetail (id) {
+  return (dispatch, getState) => {
+    fetch(`http://localhost:5050/${id}`)
+    .then((res) => {
+      if(!res.ok) {
+        throw Error(res)
+      }
+      return res.json()
+    }).then((data)=> {
+      dispatch(getDataSuccess(data))
+    })
+    .catch((error) => console.log('Request failed', error.message))
+ }
 }
 
 function getDataSuccess(data) {
