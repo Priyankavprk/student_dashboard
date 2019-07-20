@@ -8,7 +8,7 @@ class List extends Component {
         <Card.Body>
          <Card.Title>Card Title</Card.Title>
          <Card.Text>Text here</Card.Text>
-         <Button variant="primary">Go somewhere</Button>
+         <Button variant="primary" onClick={() => this.props.navigate.push('/about')}>Go somewhere</Button>
         </Card.Body>
        </Card>
     );
