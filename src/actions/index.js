@@ -13,9 +13,31 @@ export function getStudentsList () {
  }
 }
 
+export function getFilteredData (searchText) {
+  return (dispatch, getState) => {
+    if (searchText.trim() === '') {
+      dispatch(searchResult(getState().students.data))
+    } else {
+    let result = getState().students.data.filter((data) => {
+        if (data.name.search(searchText) >= 0) {
+        return data
+      }
+      })
+      dispatch(searchResult(result))
+    }
+  }
+}
+
 function getDataSuccess(data) {
   return {
     type: 'GET_DATA_SUCCESS',
     data: Object.values(data),
+  }
+}
+
+function searchResult(result) {
+  return {
+    type: 'SEARCH_RESULT',
+    data: result,
   }
 }
